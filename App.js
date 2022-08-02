@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, Button, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import {css} from './assets/css/Css';
 import React, {useState,useEffect,useRef} from 'react';
@@ -9,6 +9,7 @@ import * as Permissions from 'expo-permissions';
 import config from './config';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import MapViewDirections from 'react-native-maps-directions';
+import * as Speech from 'expo-speech';
 
 export default function App() {
 
@@ -17,6 +18,10 @@ export default function App() {
   const mapEl=useRef(null);
   const [distance,setDistance]=useState(null);
   const [price,setPrice]=useState(null);
+  const speak = () => {
+    const thingToSay = '1';
+    Speech.speak(thingToSay);
+  };
 
   useEffect(()=>{
     (async function(){
@@ -94,16 +99,9 @@ export default function App() {
         container:{position:'absolute',width:'100%'}
     }}
   />
-   {distance &&
-    <View style={css.distance}>
-        <Text style={css.distance__text}>Distância: {distance.toFixed(2).replace('.',',')}km</Text>
-        <Text>Custo Médio de R$3,00 por Km</Text>
-        <TouchableOpacity style={css.price}>
-            <Text style={css.price__text}><MaterialIcons name="payment" size={24} color="white" /> Pagar R${price.toFixed(2).replace('.',',')}</Text>
-        </TouchableOpacity>
-    </View>
-}
-
+		<View style={css.speech}>
+			<Button title="Pressione Aqui" onPress={speak} />
+		</View>
 
       </View>
     </View>

@@ -23,18 +23,12 @@ const css = StyleSheet.create({
         fontSize:20,
         fontWeight:'bold'
     },
-    price:{
-        backgroundColor: '#000',
-        padding: 7,
-        borderRadius:4,
-        marginTop:30,
-        justifyContent:'center',
-        alignItems: 'center'
-    },
-    price__text:{
-        color:'#fff',
-        fontWeight: 'bold',
-        fontSize: 20
+	speech:{
+        flex:1,
+        alignItems:'center',
+		justifyContent: 'center'
     }
+    
+
 });
 export {css};
